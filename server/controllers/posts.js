@@ -45,6 +45,16 @@ export const getUserPosts = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+// get single post
+export const getpostbyid = async (req,res)=>{
+  try {
+    const { postId } = req.params;
+    const post = await Post.find({ postId });
+    res.status(200).json(post);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+}
 
 /* UPDATE */
 export const likePost = async (req, res) => {
